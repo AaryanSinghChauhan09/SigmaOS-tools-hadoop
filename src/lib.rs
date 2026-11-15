@@ -1,3 +1,4 @@
+#![allow(non_snake_case)]
 //! Hadoop HDFS Block Manager for SigmaOS
 #[derive(Debug, Clone, PartialEq)]
 pub struct HdfsBlock {
