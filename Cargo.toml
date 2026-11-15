@@ -1,0 +1,8 @@
+[package]
+name = "SigmaOS-tools-hadoop"
+version = "0.1.0"
+edition = "2021"
+description = "Hadoop HDFS distributed block manager"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
