@@ -3,7 +3,7 @@ name = "SigmaOS-tools-hadoop"
 tier = 2
 stability = "scaffold"
 language = "rust"
-description = "tools-hadoop component"
+description = "SigmaOS Tools Hadoop - HDFS distributed block manager and replicator"
 upstream = []
 
 [contract]
