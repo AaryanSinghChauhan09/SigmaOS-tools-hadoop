@@ -1,3 +1,4 @@
+#![forbid(unsafe_code)]
 #![allow(non_snake_case)]
 //! Hadoop HDFS Block Manager for SigmaOS
 #[derive(Debug, Clone, PartialEq)]
@@ -96,5 +97,44 @@ mod tests {
         assert_eq!(blocks.len(), 6); // 24 bytes / 4 bytes per block = 6 blocks
         assert_eq!(blocks[0].replicas.len(), 2);
         assert_eq!(reconstructed, input_bytes);
+    }
+}
+
+#[cfg(test)]
+mod hadoop_extra_tests {
+    use super::*;
+
+    #[test]
+    fn test_hadoop_empty_data_reconstruction_aaa() {
+        // Arrange
+        let mut manager = HadoopBlockManager::new(4, 1);
+        let datanodes = vec!["nodeA".to_string()];
+        // Act
+        let blocks = manager.split_and_replicate(b"", &datanodes);
+        let reconstructed = manager.verify_and_reconstruct(&blocks).unwrap();
+        // Assert
+        assert!(blocks.is_empty());
+        assert!(reconstructed.is_empty());
+    }
+
+    #[test]
+    fn test_hadoop_missing_datanodes_reconstruction_aaa() {
+        // Arrange
+        let mut manager = HadoopBlockManager::new(8, 1);
+        let datanodes = vec!["nodeA".to_string()];
+        let blocks = manager.split_and_replicate(b"12345678", &datanodes);
+        // Act
+        let rec = manager.verify_and_reconstruct(&blocks).unwrap();
+        // Assert
+        assert_eq!(rec, b"12345678");
+    }
+
+    #[test]
+    fn test_hadoop_block_size_getter_aaa() {
+        // Arrange & Act
+        let manager = HadoopBlockManager::new(64, 3);
+        // Assert
+        assert_eq!(manager.default_block_size, 64);
+        assert_eq!(manager.replication_factor, 3);
     }
 }
