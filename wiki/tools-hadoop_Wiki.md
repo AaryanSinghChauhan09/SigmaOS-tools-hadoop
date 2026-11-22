@@ -1,18 +1,18 @@
-# SigmaOS-SigmaOS-tools-hadoop Component Wiki
+# SigmaOS-tools-hadoop Component Wiki
 
 ## Overview
-SigmaOS-SigmaOS-tools-hadoop provides SigmaOS Tools Hadoop - HDFS distributed block manager and replicator for the SigmaOS operating system. It demonstrates the subsystem and integration within the SigmaOS ecosystem, following the principles of clear abstraction and deterministic initialization.
+SigmaOS-tools-hadoop provides component for the SigmaOS operating system. It demonstrates the subsystem and integration within the SigmaOS ecosystem, following the principles of clear abstraction and deterministic initialization.
 
 ## Principles
-- Single Responsibility
-- SigmaOS-tools-hadoop Abstraction
-- Fail-Fast on SigmaOS-tools-hadoop Initialization Errors
-- Deterministic SigmaOS-tools-hadoop Setup
-- Clear Abstraction Over SigmaOS-tools-hadoop APIs
-- Composition over Inheritance for SigmaOS-tools-hadoop extensions
+- **Single Responsibility**: Each component has a single well-defined purpose
+- **SigmaOS-tools-hadoop Abstraction**: Clear abstraction over the component's APIs and functionality
+- **Fail-Fast on SigmaOS-tools-hadoop Initialization Errors**: Fail-fast principle for initialization errors
+- **Deterministic SigmaOS-tools-hadoop Setup**: Deterministic initialization and configuration
+- **Clear Abstraction Over SigmaOS-tools-hadoop APIs**: Well-defined, clear APIs
+- **Composition over Inheritance for SigmaOS-tools-hadoop extensions**: Use composition patterns for extensions
 
 ## Architecture
-SigmaOS-SigmaOS-tools-hadoop follows a SigmaOS-tools-hadoop pattern:
+SigmaOS-tools-hadoop follows a SigmaOS-tools-hadoop pattern:
 - **SigmaOS-tools-hadoop Core**: Provides SigmaOS-tools-hadoop support, SigmaOS-tools-hadoop management, and SigmaOS-tools-hadoop tracking
 - **Management**: Supports SigmaOS-tools-hadoop management, SigmaOS-tools-hadoop configuration, and SigmaOS-tools-hadoop lifecycle
 - **Tracking**: Supports SigmaOS-tools-hadoop status, SigmaOS-tools-hadoop tracking, and SigmaOS-tools-hadoop lifecycle
@@ -20,10 +20,10 @@ SigmaOS-SigmaOS-tools-hadoop follows a SigmaOS-tools-hadoop pattern:
 
 ## API
 The component provides the following public APIs:
--  - Manage a SigmaOS-tools-hadoop by given configuration
--  - Register a SigmaOS-tools-hadoop by given name
--  - Get SigmaOS-tools-hadoop status and SigmaOS-tools-hadoop availability
--  - Track SigmaOS-tools-hadoop management and SigmaOS-tools-hadoop tracking
+- Manage a SigmaOS-tools-hadoop by given configuration
+- Register a SigmaOS-tools-hadoop by given name
+- Get SigmaOS-tools-hadoop status and SigmaOS-tools-hadoop availability
+- Track SigmaOS-tools-hadoop management and SigmaOS-tools-hadoop tracking
 - Error types for SigmaOS-tools-hadoop failure scenarios or unsupported SigmaOS-tools-hadoop types
 
 ## Test Structure (Arrange-Act-ASSERT)
@@ -32,11 +32,8 @@ All tests follow the AAA pattern:
 2. **Act**: Execute the code under test (SigmaOS-tools-hadoop init, SigmaOS-tools-hadoop management)
 3. **Assert**: Verify the expected SigmaOS-tools-hadoop results
 
-Example:
-
-
 ## Development
-- Follows Rust best practices with 
+- Follows best practices with clear abstraction boundaries
 - SigmaOS-tools-hadoop initialization is best-effort; gracefully degrades on unsupported configurations
 - Comprehensive error types for all SigmaOS-tools-hadoop failure scenarios
 - Unit tests provided for SigmaOS-tools-hadoop management and configuration
